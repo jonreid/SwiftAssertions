@@ -10,7 +10,7 @@ public func verifyContains<Actual: Sequence>(
     filePath: StaticString = #filePath,
     line: UInt = #line,
     column: UInt = #column,
-    failure: any Failing = Fail()
+    failure: any Failing = FailReal()
 ) where Actual.Element: Equatable {
     if actual.contains(expected) { return }
     failure.fail(
@@ -27,7 +27,7 @@ public func verifyContains(
     filePath: StaticString = #filePath,
     line: UInt = #line,
     column: UInt = #column,
-    failure: any Failing = Fail()
+    failure: any Failing = FailReal()
 ) {
     if actual.contains(expected) { return }
     failure.fail(

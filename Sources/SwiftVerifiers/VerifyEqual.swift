@@ -10,7 +10,7 @@ public func verifyEqual<T: Equatable>(
     filePath: StaticString = #filePath,
     line: UInt = #line,
     column: UInt = #column,
-    failure: any Failing = Fail()
+    failure: any Failing = FailReal()
 ) {
     if actual == expected { return }
     failure.fail(

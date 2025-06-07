@@ -13,7 +13,7 @@ public func verifyType<BaseClass, Specific>(
     filePath: StaticString = #filePath,
     line: UInt = #line,
     column: UInt = #column,
-    failure: any Failing = Fail()
+    failure: any Failing = FailReal()
 ) -> Specific? {
     guard let actual else {
         failure.fail(

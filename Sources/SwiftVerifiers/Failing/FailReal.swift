@@ -8,7 +8,7 @@ import XCTest
 import Testing
 #endif
 
-public struct Fail: Failing {
+public struct FailReal: Failing {
     public init() {}
 
     public func fail(message: String, location: SourceLocation) {
