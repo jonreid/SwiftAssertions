@@ -4,5 +4,5 @@
 
 public func describeMismatch<T>(_ type: T.Type, expected: T, actual: T, message: String? = nil) -> String {
     let message = message.map { " - \($0)" } ?? ""
-    return "Expected \(describe(type, value: expected)), but was \(describe(type, value: actual))\(message)"
+    return "Expected \(describe(expected)), but was \(describe(actual))\(message)"
 }

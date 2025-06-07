@@ -43,7 +43,7 @@ final class VerifyEqualTests: @unchecked Sendable {
         verifyEqual(expected: one, actual: two, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
-        #expect(failSpy.messages.first == "Expected Optional(1), but was Optional(2)")
+        #expect(failSpy.messages.first == "Expected 1, but was 2")
     }
 
     @Test
@@ -54,7 +54,7 @@ final class VerifyEqualTests: @unchecked Sendable {
         verifyEqual(expected: one, actual: two, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
-        #expect(failSpy.messages.first == "Expected nil, but was Optional(2)")
+        #expect(failSpy.messages.first == "Expected nil, but was 2")
     }
 
     @Test
@@ -65,6 +65,6 @@ final class VerifyEqualTests: @unchecked Sendable {
         verifyEqual(expected: one, actual: two, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
-        #expect(failSpy.messages.first == "Expected Optional(1), but was nil")
+        #expect(failSpy.messages.first == "Expected 1, but was nil")
     }
 }

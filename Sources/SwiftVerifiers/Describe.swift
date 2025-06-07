@@ -2,12 +2,19 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-public func describe<T>(_ type: T.Type, value: T) -> String {
-    let description = String(describing: value)
-    if type == String.self {
-        return toFormattedString(description)
+public func describe(_ value: Any) -> String {
+    let mirror = Mirror(reflecting: value)
+    if mirror.displayStyle == .optional {
+        if mirror.children.count == 0 {
+            return "nil"
+        } else if let child = mirror.children.first {
+            return String(describing: child.value)
+        }
     }
-    return description
+    if let stringValue = value as? String {
+        return toFormattedString(stringValue)
+    }
+    return String(describing: value)
 }
 
 private func toFormattedString(_ unformatted: String) -> String {
