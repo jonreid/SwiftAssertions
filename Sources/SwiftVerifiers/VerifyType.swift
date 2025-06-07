@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 /// Verifies that actual object is of the expected type, returning downcast instance if successful.
-/// Otherwise, it fails the test reporting the actual type, and returns nil.
+/// Otherwise, it fails the test reporting the actual type and returns nil.
 @discardableResult
 public func verifyType<BaseClass, Specific>(
     _ actual: BaseClass?,
