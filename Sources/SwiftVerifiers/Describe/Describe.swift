@@ -11,15 +11,6 @@ private class StringDescriber: Describer {
     }
 }
 
-private class FallbackDescriber: Describer {
-    override func willHandle(_ value: Any) -> Bool {
-        true // Always handles if reached
-    }
-    override func describe(_ value: Any) -> String {
-        String(describing: value)
-    }
-}
-
 private var describerChain: Describer {
     let fallback = FallbackDescriber()
     let stringHandler = StringDescriber(next: fallback)
