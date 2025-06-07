@@ -2,7 +2,7 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-final class OptionalDescriber: Describer {
+final class OptionalDescriber: Describer, @unchecked Sendable {
     override func willHandle(_ value: Any) -> Bool {
         Mirror(reflecting: value).displayStyle == .optional
     }

@@ -2,7 +2,7 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-final class FallbackDescriber: Describer {
+final class FallbackDescriber: Describer, @unchecked Sendable {
     override func willHandle(_ value: Any) -> Bool {
         true
     }
