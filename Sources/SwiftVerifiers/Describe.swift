@@ -39,7 +39,7 @@ private class OptionalDescriber: Describer {
     }
 }
 
-private class StringDescribeHandler: Describer {
+private class StringDescriber: Describer {
     override func willHandle(_ value: Any) -> Bool {
         value is String
     }
@@ -59,7 +59,7 @@ private class FallbackDescribeHandler: Describer {
 
 public func describe(_ value: Any) -> String {
     let fallback = FallbackDescribeHandler()
-    let stringHandler = StringDescribeHandler(next: fallback)
+    let stringHandler = StringDescriber(next: fallback)
     let optionalHandler = OptionalDescriber(next: stringHandler)
     return optionalHandler.handle(value)
 }
