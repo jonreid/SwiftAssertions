@@ -33,16 +33,16 @@ final class ExpectToEventuallyEqualTests: @unchecked Sendable {
         let changeling = Changeling(beforeChange: "nope")
 
         try await expectToEventuallyEqual(
-            actual: { changeling.tryAgain(returning: "never", after: 15) },
+            actual: { changeling.tryAgain(returning: "never", after: 5) },
             expected: "eventually",
-            timeout: 0.4,
+            timeout: 0.1,
             failure: failSpy
         )
 
         #expect(failSpy.callCount == 1)
         let message = try #require(failSpy.messages.first)
         #expect(message.hasPrefix("Expected \"eventually\", but was \"never\" after "), Comment(rawValue: message))
-        #expect(message.hasSuffix(" tries, timing out after 0.4 seconds"), Comment(rawValue: message))
+        #expect(message.hasSuffix(" tries, timing out after 0.1 seconds"), Comment(rawValue: message))
         let location = try #require(failSpy.locations.first)
         #expect("\(location.filePath)".hasSuffix("/ExpectToEventuallyEqualTests.swift"), Comment(rawValue: "file"))
         #expect(location.line == 35, Comment(rawValue: "line"))
@@ -53,7 +53,7 @@ final class ExpectToEventuallyEqualTests: @unchecked Sendable {
         let changeling = Changeling(beforeChange: "nope")
 
         try await expectToEventuallyEqual(
-            actual: { changeling.tryAgain(returning: "never", after: 1) },
+            actual: { changeling.tryAgain(returning: "never", after: 5) },
             expected: "eventually",
             timeout: 0.1,
             message: "message",
