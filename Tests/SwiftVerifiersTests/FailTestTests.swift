@@ -10,7 +10,7 @@ final class FailTestTests: @unchecked Sendable {
 
     @Test
     func failWorks() async throws {
-        failTest("message", failure: failSpy)
+        fail("message", failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "message")

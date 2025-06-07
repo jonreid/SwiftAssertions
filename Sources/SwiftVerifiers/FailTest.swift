@@ -2,7 +2,7 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-public func failTest(
+public func fail(
     _ message: String,
     fileID: String = #fileID,
     filePath: StaticString = #filePath,
