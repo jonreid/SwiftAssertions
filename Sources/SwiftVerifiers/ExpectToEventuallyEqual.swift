@@ -5,7 +5,7 @@
 import Foundation
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func expectToEventuallyEqual<T: Equatable & Sendable>(
+public func expectToEventuallyEqual<T: Equatable>(
     actual: () async throws -> T,
     expected: T,
     timeout: TimeInterval = 1.0,
