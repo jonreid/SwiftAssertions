@@ -5,8 +5,8 @@
 class Describer {
     private let successor: Describer?
 
-    init(next: Describer? = nil) {
-        self.successor = next
+    init(successor: Describer? = nil) {
+        self.successor = successor
     }
 
     func handle(_ value: Any) -> String {

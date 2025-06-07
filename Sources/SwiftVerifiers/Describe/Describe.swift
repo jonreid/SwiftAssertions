@@ -4,8 +4,8 @@
 
 private var describerChain: Describer {
     let fallback = FallbackDescriber()
-    let stringHandler = StringDescriber(next: fallback)
-    let optionalHandler = OptionalDescriber(next: stringHandler)
+    let stringHandler = StringDescriber(successor: fallback)
+    let optionalHandler = OptionalDescriber(successor: stringHandler)
     return optionalHandler
 }
 
