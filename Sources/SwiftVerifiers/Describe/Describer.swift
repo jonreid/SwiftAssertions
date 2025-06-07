@@ -12,11 +12,11 @@ class Describer {
     func handle(_ value: Any) -> String {
         if willHandle(value) {
             return describe(value)
-        } else if let next = next {
-            return next.handle(value)
-        } else {
-            return "" // Fallback if no handler processes the value
         }
+        if let next {
+            return next.handle(value)
+        }
+        return "error: no describer for value"
     }
 
     func willHandle(_ value: Any) -> Bool {
