@@ -9,7 +9,7 @@ private class Describer {
     }
     func handle(_ value: Any) -> String {
         if willHandle(value) {
-            return executeHandling(value)
+            return describe(value)
         } else if let next = next {
             return next.handle(value)
         } else {
@@ -19,8 +19,8 @@ private class Describer {
     func willHandle(_ value: Any) -> Bool {
         fatalError("Subclasses must override willHandle(_:)")
     }
-    func executeHandling(_ value: Any) -> String {
-        fatalError("Subclasses must override executeHandling(_:)")
+    func describe(_ value: Any) -> String {
+        fatalError("Subclasses must override describe(_:)")
     }
 }
 
@@ -28,7 +28,7 @@ private class OptionalDescriber: Describer {
     override func willHandle(_ value: Any) -> Bool {
         Mirror(reflecting: value).displayStyle == .optional
     }
-    override func executeHandling(_ value: Any) -> String {
+    override func describe(_ value: Any) -> String {
         let mirror = Mirror(reflecting: value)
         if mirror.children.count == 0 {
             return "nil"
@@ -43,7 +43,7 @@ private class StringDescriber: Describer {
     override func willHandle(_ value: Any) -> Bool {
         value is String
     }
-    override func executeHandling(_ value: Any) -> String {
+    override func describe(_ value: Any) -> String {
         toFormattedString(value as! String)
     }
 }
@@ -52,7 +52,7 @@ private class FallbackDescribeHandler: Describer {
     override func willHandle(_ value: Any) -> Bool {
         true // Always handles if reached
     }
-    override func executeHandling(_ value: Any) -> String {
+    override func describe(_ value: Any) -> String {
         String(describing: value)
     }
 }
