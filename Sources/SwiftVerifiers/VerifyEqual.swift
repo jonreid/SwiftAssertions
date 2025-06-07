@@ -12,7 +12,7 @@ public func verifyEqual<T: Equatable>(
     column: UInt = #column,
     failure: any Failing = Fail()
 ) {
-    if expected == actual { return }
+    if actual == expected { return }
     failure.fail(
         message: describeMismatch(T.self, expected: expected, actual: actual, message: message),
         location: SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
