@@ -60,7 +60,7 @@ final class VerifyEqualTests: @unchecked Sendable {
     }
 
     @Test
-    func optionalWithDifferentValues() async throws {
+    func mismatchOptionals() async throws {
         let one: Int? = 1
         let two: Int? = 2
 
@@ -71,7 +71,7 @@ final class VerifyEqualTests: @unchecked Sendable {
     }
 
     @Test
-    func optionalWithExpectedNil() async throws {
+    func mismatchOptionalsWithExpectedNil() async throws {
         let one: Int? = nil
         let two: Int? = 2
 
@@ -82,7 +82,7 @@ final class VerifyEqualTests: @unchecked Sendable {
     }
 
     @Test
-    func optionalWithActualNil() async throws {
+    func mismatchOptionalsWithActualNil() async throws {
         let one: Int? = 1
         let two: Int? = nil
 
