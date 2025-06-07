@@ -6,14 +6,14 @@ final class VerifyEqualTests: @unchecked Sendable {
 
     @Test
     func equal() async throws {
-        verifyEqual(actual: 1, expected: 1, failure: failSpy)
+        verifyEqual(1, expected: 1, failure: failSpy)
 
         #expect(failSpy.callCount == 0)
     }
 
     @Test
     func mismatch() async throws {
-        verifyEqual(actual: 2, expected: 1, failure: failSpy)
+        verifyEqual(2, expected: 1, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected 1, but was 2")
@@ -21,7 +21,7 @@ final class VerifyEqualTests: @unchecked Sendable {
 
     @Test
     func mismatchStrings() async throws {
-        verifyEqual(actual: "B", expected: "A", failure: failSpy)
+        verifyEqual("B", expected: "A", failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == #"Expected "A", but was "B""#)
@@ -29,7 +29,7 @@ final class VerifyEqualTests: @unchecked Sendable {
 
     @Test
     func mismatchMessage() async throws {
-        verifyEqual(actual: 2, expected: 1, message: "message", failure: failSpy)
+        verifyEqual(2, expected: 1, message: "message", failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected 1, but was 2 - message")
@@ -40,7 +40,7 @@ final class VerifyEqualTests: @unchecked Sendable {
         let one: Int? = 1
         let two: Int? = 1
 
-        verifyEqual(actual: two, expected: one, failure: failSpy)
+        verifyEqual(two, expected: one, failure: failSpy)
 
         #expect(failSpy.callCount == 0)
     }
@@ -50,7 +50,7 @@ final class VerifyEqualTests: @unchecked Sendable {
         let one: Int? = nil
         let two: Int? = nil
 
-        verifyEqual(actual: two, expected: one, failure: failSpy)
+        verifyEqual(two, expected: one, failure: failSpy)
 
         #expect(failSpy.callCount == 0)
     }
@@ -60,7 +60,7 @@ final class VerifyEqualTests: @unchecked Sendable {
         let one: Int? = 1
         let two: Int? = 2
 
-        verifyEqual(actual: two, expected: one, failure: failSpy)
+        verifyEqual(two, expected: one, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected 1, but was 2")
@@ -71,7 +71,7 @@ final class VerifyEqualTests: @unchecked Sendable {
         let one: Int? = nil
         let two: Int? = 2
 
-        verifyEqual(actual: two, expected: one, failure: failSpy)
+        verifyEqual(two, expected: one, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected nil, but was 2")
@@ -82,7 +82,7 @@ final class VerifyEqualTests: @unchecked Sendable {
         let one: Int? = 1
         let two: Int? = nil
 
-        verifyEqual(actual: two, expected: one, failure: failSpy)
+        verifyEqual(two, expected: one, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected 1, but was nil")
