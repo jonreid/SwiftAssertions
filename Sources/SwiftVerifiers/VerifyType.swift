@@ -14,6 +14,13 @@ public func verifyType<BaseClass, Specific>(
     column: UInt = #column,
     failure: any Failing = Fail()
 ) -> Specific? {
+    guard let actual else {
+        failure.fail(
+            message: "Expected \(Specific.self), but was nil",
+            location: SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
+        )
+        return nil
+    }
     guard let typed = actual as? Specific else {
         failure.fail(
             message: "Expected \(Specific.self), but was \(describe(actual))",
