@@ -57,11 +57,15 @@ private class FallbackDescribeHandler: Describer {
     }
 }
 
-public func describe(_ value: Any) -> String {
+private var describerChain: Describer {
     let fallback = FallbackDescribeHandler()
     let stringHandler = StringDescriber(next: fallback)
     let optionalHandler = OptionalDescriber(next: stringHandler)
-    return optionalHandler.handle(value)
+    return optionalHandler
+}
+
+public func describe(_ value: Any) -> String {
+    return describerChain.handle(value)
 }
 
 private func toFormattedString(_ unformatted: String) -> String {
