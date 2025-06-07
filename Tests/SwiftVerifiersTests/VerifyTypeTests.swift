@@ -31,7 +31,7 @@ final class VerifyTypeTests: @unchecked Sendable {
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)
-        #expect(failSpy.messages.first == "Expected Cat, but was Optional(SwiftVerifiersTests.Dog)")
+        #expect(failSpy.messages.first == "Expected Cat, but was SwiftVerifiersTests.Dog")
     }
 
     @Test

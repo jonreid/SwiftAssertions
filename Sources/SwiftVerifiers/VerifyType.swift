@@ -16,7 +16,7 @@ public func verifyType<BaseClass, Specific>(
 ) -> Specific? {
     guard let typed = actual as? Specific else {
         failure.fail(
-            message: "Expected \(Specific.self), but was \(String(describing: actual))",
+            message: "Expected \(Specific.self), but was \(describe(actual))",
             location: SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
         )
         return nil
