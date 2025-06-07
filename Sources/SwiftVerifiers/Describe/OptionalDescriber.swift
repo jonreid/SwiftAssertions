@@ -6,12 +6,13 @@ final class OptionalDescriber: Describer {
     override func willHandle(_ value: Any) -> Bool {
         Mirror(reflecting: value).displayStyle == .optional
     }
-    
+
     override func describe(_ value: Any) -> String {
         let mirror = Mirror(reflecting: value)
         if mirror.children.count == 0 {
             return "nil"
-        } else if let child = mirror.children.first {
+        }
+        if let child = mirror.children.first {
             return String(describing: child.value)
         }
         return ""
