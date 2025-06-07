@@ -1,0 +1,19 @@
+// SwiftVerifiers by Jon Reid, https://qualitycoding.org
+// Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
+// SPDX-License-Identifier: MIT
+
+final class OptionalDescriber: Describer {
+    override func willHandle(_ value: Any) -> Bool {
+        Mirror(reflecting: value).displayStyle == .optional
+    }
+    
+    override func describe(_ value: Any) -> String {
+        let mirror = Mirror(reflecting: value)
+        if mirror.children.count == 0 {
+            return "nil"
+        } else if let child = mirror.children.first {
+            return String(describing: child.value)
+        }
+        return ""
+    }
+}
