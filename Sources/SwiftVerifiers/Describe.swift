@@ -2,19 +2,66 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-public func describe(_ value: Any) -> String {
-    let mirror = Mirror(reflecting: value)
-    if mirror.displayStyle == .optional {
+private class DescribeHandler {
+    var next: DescribeHandler?
+    init(next: DescribeHandler? = nil) {
+        self.next = next
+    }
+    func handle(_ value: Any) -> String {
+        if willHandle(value) {
+            return executeHandling(value)
+        } else if let next = next {
+            return next.handle(value)
+        } else {
+            return "" // Fallback if no handler processes the value
+        }
+    }
+    func willHandle(_ value: Any) -> Bool {
+        fatalError("Subclasses must override willHandle(_:)")
+    }
+    func executeHandling(_ value: Any) -> String {
+        fatalError("Subclasses must override executeHandling(_:)")
+    }
+}
+
+private class OptionalDescribeHandler: DescribeHandler {
+    override func willHandle(_ value: Any) -> Bool {
+        Mirror(reflecting: value).displayStyle == .optional
+    }
+    override func executeHandling(_ value: Any) -> String {
+        let mirror = Mirror(reflecting: value)
         if mirror.children.count == 0 {
             return "nil"
         } else if let child = mirror.children.first {
             return String(describing: child.value)
         }
+        return ""
     }
-    if let stringValue = value as? String {
-        return toFormattedString(stringValue)
+}
+
+private class StringDescribeHandler: DescribeHandler {
+    override func willHandle(_ value: Any) -> Bool {
+        value is String
     }
-    return String(describing: value)
+    override func executeHandling(_ value: Any) -> String {
+        toFormattedString(value as! String)
+    }
+}
+
+private class FallbackDescribeHandler: DescribeHandler {
+    override func willHandle(_ value: Any) -> Bool {
+        true // Always handles if reached
+    }
+    override func executeHandling(_ value: Any) -> String {
+        String(describing: value)
+    }
+}
+
+public func describe(_ value: Any) -> String {
+    let fallback = FallbackDescribeHandler()
+    let stringHandler = StringDescribeHandler(next: fallback)
+    let optionalHandler = OptionalDescribeHandler(next: stringHandler)
+    return optionalHandler.handle(value)
 }
 
 private func toFormattedString(_ unformatted: String) -> String {
