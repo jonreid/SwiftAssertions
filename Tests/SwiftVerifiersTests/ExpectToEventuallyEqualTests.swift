@@ -47,6 +47,23 @@ final class ExpectToEventuallyEqualTests: @unchecked Sendable {
         #expect("\(location.filePath)".hasSuffix("/ExpectToEventuallyEqualTests.swift"), Comment(rawValue: "file"))
         #expect(location.line == 35, Comment(rawValue: "line"))
     }
+
+    @Test
+    func failureWithMessage() async throws {
+        let changeling = Changeling(beforeChange: "nope")
+
+        try await expectToEventuallyEqual(
+            actual: { changeling.tryAgain(returning: "never", after: 1) },
+            expected: "eventually",
+            timeout: 0.1,
+            message: "message",
+            failure: failSpy
+        )
+
+        #expect(failSpy.callCount == 1)
+        let message = try #require(failSpy.messages.first)
+        #expect(message.hasSuffix(" tries, timing out after 0.1 seconds - message"), Comment(rawValue: message))
+    }
 }
 
 private final class Changeling<T> {
