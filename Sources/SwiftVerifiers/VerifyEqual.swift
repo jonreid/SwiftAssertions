@@ -14,7 +14,7 @@ public func verifyEqual<T: Equatable>(
 ) {
     if actual == expected { return }
     failure.fail(
-        message: describeMismatch(actual: actual, expected: expected, message: message),
+        message: "Expected \(describe(expected)), but was \(describe(actual))" + messageSuffix(message),
         location: SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
     )
 }
