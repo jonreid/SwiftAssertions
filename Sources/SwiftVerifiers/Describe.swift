@@ -2,9 +2,9 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-private class DescribeHandler {
-    var next: DescribeHandler?
-    init(next: DescribeHandler? = nil) {
+private class Describer {
+    var next: Describer?
+    init(next: Describer? = nil) {
         self.next = next
     }
     func handle(_ value: Any) -> String {
@@ -24,7 +24,7 @@ private class DescribeHandler {
     }
 }
 
-private class OptionalDescribeHandler: DescribeHandler {
+private class OptionalDescribeHandler: Describer {
     override func willHandle(_ value: Any) -> Bool {
         Mirror(reflecting: value).displayStyle == .optional
     }
@@ -39,7 +39,7 @@ private class OptionalDescribeHandler: DescribeHandler {
     }
 }
 
-private class StringDescribeHandler: DescribeHandler {
+private class StringDescribeHandler: Describer {
     override func willHandle(_ value: Any) -> Bool {
         value is String
     }
@@ -48,7 +48,7 @@ private class StringDescribeHandler: DescribeHandler {
     }
 }
 
-private class FallbackDescribeHandler: DescribeHandler {
+private class FallbackDescribeHandler: Describer {
     override func willHandle(_ value: Any) -> Bool {
         true // Always handles if reached
     }
