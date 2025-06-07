@@ -44,4 +44,15 @@ final class VerifyTypeTests: @unchecked Sendable {
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected Cat, but was nil")
     }
-} 
+
+    @Test
+    func nilFailsWithMessage() async throws {
+        let animal: Animal? = nil
+
+        let result = verifyType(animal, expectedType: Cat.self, message: "message", failure: failSpy)
+
+        #expect(result == nil)
+        #expect(failSpy.callCount == 1)
+        #expect(failSpy.messages.first == "Expected Cat, but was nil - message")
+    }
+}

@@ -32,7 +32,7 @@ final class VerifyEqualTests: @unchecked Sendable {
     }
 
     @Test
-    func mismatchMessage() async throws {
+    func mismatchWithMessage() async throws {
         verifyEqual(2, expected: 1, message: "message", failure: failSpy)
 
         #expect(failSpy.callCount == 1)
