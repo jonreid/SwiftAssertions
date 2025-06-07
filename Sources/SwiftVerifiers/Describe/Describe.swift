@@ -2,6 +2,10 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
+public func describe(_ value: Any) -> String {
+    return DescriberChain.head.handle(value)
+}
+
 private enum DescriberChain {
     static let head: Describer = {
         let fallback = FallbackDescriber()
@@ -9,8 +13,4 @@ private enum DescriberChain {
         let optionalHandler = OptionalDescriber(successor: stringHandler)
         return optionalHandler
     }()
-}
-
-public func describe(_ value: Any) -> String {
-    return DescriberChain.head.handle(value)
 }
