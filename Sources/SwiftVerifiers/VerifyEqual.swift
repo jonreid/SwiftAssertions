@@ -3,8 +3,8 @@
 // SPDX-License-Identifier: MIT
 
 public func verifyEqual<T: Equatable>(
-    expected: T,
     actual: T,
+    expected: T,
     message: String? = nil,
     fileID: String = #fileID,
     filePath: StaticString = #filePath,
