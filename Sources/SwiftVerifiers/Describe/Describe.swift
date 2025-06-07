@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 private enum DescriberChain {
-    static let chain: Describer = {
+    static let head: Describer = {
         let fallback = FallbackDescriber()
         let stringHandler = StringDescriber(successor: fallback)
         let optionalHandler = OptionalDescriber(successor: stringHandler)
@@ -12,5 +12,5 @@ private enum DescriberChain {
 }
 
 public func describe(_ value: Any) -> String {
-    return DescriberChain.chain.handle(value)
+    return DescriberChain.head.handle(value)
 }
