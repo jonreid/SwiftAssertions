@@ -7,22 +7,22 @@ import Testing
 
 final class DescribeTests: @unchecked Sendable {
     @Test
-    func describeStringWithQuotes_enclosesInQuotes_escapingBackslashAndQuote() throws {
+    func stringWithQuote() throws {
         #expect(describe("a\"b") == #""a\"b""#)
     }
 
     @Test
-    func describeStringWithNewline_enclosesInQuotes_escapingBackslash() throws {
+    func stringWithNewline() throws {
         #expect(describe("a\nb") == #""a\nb""#)
     }
 
     @Test
-    func describeStringWithCarriageReturn_enclosesInQuotes_escapingBackslash() throws {
+    func stringWithCarriageReturn() throws {
         #expect(describe("a\rb") == #""a\rb""#)
     }
 
     @Test
-    func describeStringWithTab_enclosesInQuotes_escapingBackslash() throws {
+    func stringWithTab() throws {
         #expect(describe("a\tb") == #""a\tb""#)
     }
 }
