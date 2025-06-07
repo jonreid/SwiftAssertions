@@ -2,7 +2,7 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-class Describer {
+class Describer: @unchecked Sendable {
     private let successor: Describer?
 
     init(successor: Describer? = nil) {
