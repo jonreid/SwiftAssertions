@@ -5,7 +5,7 @@
 import SwiftVerifiers
 import Testing
 
-final class DescribeMismatchTests: @unchecked Sendable {
+final class DescribeTests: @unchecked Sendable {
     @Test
     func describeStringWithQuotes_enclosesInQuotes_escapingBackslashAndQuote() throws {
         #expect(describe("a\"b") == #""a\"b""#)
