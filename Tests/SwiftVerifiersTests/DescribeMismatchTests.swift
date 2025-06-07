@@ -8,19 +8,19 @@ import Testing
 final class DescribeMismatchTests: @unchecked Sendable {
     @Test
     func describeMismatch_forString() throws {
-        let message = describeMismatch(String.self, actual: "def", expected: "abc")
+        let message = describeMismatch(actual: "def", expected: "abc")
         #expect(message == #"Expected "abc", but was "def""#)
     }
 
     @Test
     func describeMismatch_forInt() throws {
-        let message = describeMismatch(Int.self, actual: 1, expected: 0)
+        let message = describeMismatch(actual: 1, expected: 0)
         #expect(message == "Expected 0, but was 1")
     }
 
     @Test
     func describeMismatch_forOptionalInt() throws {
-        let message = describeMismatch(Int?.self, actual: nil, expected: 3)
+        let message = describeMismatch(actual: nil, expected: 3)
         #expect(message == "Expected 3, but was nil")
     }
 
