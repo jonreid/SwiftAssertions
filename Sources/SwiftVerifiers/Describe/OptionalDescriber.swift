@@ -9,12 +9,9 @@ final class OptionalDescriber: Describer {
 
     override func describe(_ value: Any) -> String {
         let mirror = Mirror(reflecting: value)
-        if mirror.children.count == 0 {
-            return "nil"
-        }
         if let child = mirror.children.first {
             return String(describing: child.value)
         }
-        return ""
+        return "nil"
     }
 }
