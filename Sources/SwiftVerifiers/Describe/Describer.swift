@@ -3,10 +3,12 @@
 // SPDX-License-Identifier: MIT
 
 class Describer {
-    var next: Describer?
+    private let next: Describer?
+
     init(next: Describer? = nil) {
         self.next = next
     }
+
     func handle(_ value: Any) -> String {
         if willHandle(value) {
             return describe(value)
@@ -16,9 +18,11 @@ class Describer {
             return "" // Fallback if no handler processes the value
         }
     }
+
     func willHandle(_ value: Any) -> Bool {
         fatalError("Subclasses must override willHandle(_:)")
     }
+
     func describe(_ value: Any) -> String {
         fatalError("Subclasses must override describe(_:)")
     }
