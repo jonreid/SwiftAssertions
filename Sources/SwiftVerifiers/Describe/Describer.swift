@@ -3,18 +3,18 @@
 // SPDX-License-Identifier: MIT
 
 class Describer {
-    private let next: Describer?
+    private let successor: Describer?
 
     init(next: Describer? = nil) {
-        self.next = next
+        self.successor = next
     }
 
     func handle(_ value: Any) -> String {
         if willHandle(value) {
             return describe(value)
         }
-        if let next {
-            return next.handle(value)
+        if let successor {
+            return successor.handle(value)
         }
         return "error: no describer for value"
     }
