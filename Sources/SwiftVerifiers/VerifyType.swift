@@ -15,17 +15,16 @@ public func verifyType<BaseClass, Specific>(
     column: UInt = #column,
     failure: any Failing = Fail()
 ) -> Specific? {
-    let message = message.map { " - \($0)" } ?? ""
     guard let actual else {
         failure.fail(
-            message: "Expected \(Specific.self), but was nil" + message,
+            message: "Expected \(Specific.self), but was nil" + messageSuffix(message),
             location: SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
         )
         return nil
     }
     guard let typed = actual as? Specific else {
         failure.fail(
-            message: "Expected \(Specific.self), but was \(describe(actual))" + message,
+            message: "Expected \(Specific.self), but was \(describe(actual))" + messageSuffix(message),
             location: SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
         )
         return nil

@@ -3,6 +3,9 @@
 // SPDX-License-Identifier: MIT
 
 public func describeMismatch<T>(_ type: T.Type, actual: T, expected: T, message: String? = nil) -> String {
-    let message = message.map { " - \($0)" } ?? ""
-    return "Expected \(describe(expected)), but was \(describe(actual))" + message
+    "Expected \(describe(expected)), but was \(describe(actual))" + messageSuffix(message)
+}
+
+public func messageSuffix(_ message: String?) -> String {
+    message.map { " - \($0)" } ?? ""
 }
