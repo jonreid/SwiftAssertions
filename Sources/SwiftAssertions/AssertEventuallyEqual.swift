@@ -5,6 +5,7 @@
 import Foundation
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@MainActor
 public func assertEventuallyEqual<T: Equatable & Sendable>(
     actual: () async throws -> T,
     expected: T,
