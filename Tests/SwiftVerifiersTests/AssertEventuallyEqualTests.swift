@@ -5,7 +5,7 @@
 import SwiftVerifiers
 import Testing
 
-final class ExpectToEventuallyEqualTests: @unchecked Sendable {
+final class AssertEventuallyEqualTests: @unchecked Sendable {
     let failSpy = FailSpy()
 
     @Test
@@ -44,7 +44,7 @@ final class ExpectToEventuallyEqualTests: @unchecked Sendable {
         #expect(message.hasPrefix("Expected \"eventually\", but was \"never\" after "), Comment(rawValue: message))
         #expect(message.hasSuffix(" tries, timing out after 0.1 seconds"), Comment(rawValue: message))
         let location = try #require(failSpy.locations.first)
-        #expect("\(location.filePath)".hasSuffix("/ExpectToEventuallyEqualTests.swift"), Comment(rawValue: "file"))
+        #expect("\(location.filePath)".hasSuffix("/AssertEventuallyEqualTests.swift"), Comment(rawValue: "file"))
         #expect(location.line == 35, Comment(rawValue: "line"))
     }
 
