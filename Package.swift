@@ -3,18 +3,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftVerifiers",
+    name: "SwiftAssertions",
     products: [
         .library(
-            name: "SwiftVerifiers",
-            targets: ["SwiftVerifiers"]),
+            name: "SwiftAssertions",
+            targets: ["SwiftAssertions"]),
     ],
     targets: [
         .target(
-            name: "SwiftVerifiers"),
+            name: "SwiftAssertions"),
         .testTarget(
-            name: "SwiftVerifiersTests",
-            dependencies: ["SwiftVerifiers"]
+            name: "SwiftAssertionsTests",
+            dependencies: ["SwiftAssertions"]
         ),
     ]
 )

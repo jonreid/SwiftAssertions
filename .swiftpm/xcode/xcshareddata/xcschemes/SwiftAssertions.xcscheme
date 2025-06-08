@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1640"
+   LastUpgradeVersion = "1630"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftVerifiers"
-               BuildableName = "SwiftVerifiers"
-               BlueprintName = "SwiftVerifiers"
+               BlueprintIdentifier = "SwiftAssertions"
+               BuildableName = "SwiftAssertions"
+               BlueprintName = "SwiftAssertions"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,9 +34,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftVerifiersTests"
-               BuildableName = "SwiftVerifiersTests"
-               BlueprintName = "SwiftVerifiersTests"
+               BlueprintIdentifier = "SwiftAssertionsTests"
+               BuildableName = "SwiftAssertionsTests"
+               BlueprintName = "SwiftAssertionsTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -62,9 +62,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "SwiftVerifiers"
-            BuildableName = "SwiftVerifiers"
-            BlueprintName = "SwiftVerifiers"
+            BlueprintIdentifier = "SwiftAssertions"
+            BuildableName = "SwiftAssertions"
+            BlueprintName = "SwiftAssertions"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

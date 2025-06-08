@@ -1,8 +1,8 @@
-// SwiftVerifiers by Jon Reid, https://qualitycoding.org
-// Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
+// SwiftAssertions by Jon Reid, https://qualitycoding.org
+// Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftAssertions/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-import SwiftVerifiers
+import SwiftAssertions
 import Testing
 
 class Animal {}
@@ -30,7 +30,7 @@ final class AssertTypeTests: @unchecked Sendable {
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)
-        #expect(failSpy.messages.first == "Expected Cat, but was SwiftVerifiersTests.Dog")
+        #expect(failSpy.messages.first == "Expected Cat, but was SwiftAssertionsTests.Dog")
     }
 
     @Test
@@ -41,7 +41,7 @@ final class AssertTypeTests: @unchecked Sendable {
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)
-        #expect(failSpy.messages.first == "Expected Cat, but was SwiftVerifiersTests.Dog - message")
+        #expect(failSpy.messages.first == "Expected Cat, but was SwiftAssertionsTests.Dog - message")
     }
 
     @Test

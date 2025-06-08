@@ -1,5 +1,5 @@
-// SwiftVerifiers by Jon Reid, https://qualitycoding.org
-// Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
+// SwiftAssertions by Jon Reid, https://qualitycoding.org
+// Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftAssertions/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
 public final class FailSpy: Failing {

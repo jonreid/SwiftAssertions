@@ -1,0 +1,7 @@
+// SwiftAssertions by Jon Reid, https://qualitycoding.org
+// Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftAssertions/blob/main/LICENSE.txt
+// SPDX-License-Identifier: MIT
+
+public func messageSuffix(_ message: String?) -> String {
+    message.map { " - \($0)" } ?? ""
+}
