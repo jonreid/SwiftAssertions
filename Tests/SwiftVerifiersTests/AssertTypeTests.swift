@@ -9,8 +9,7 @@ class Animal {}
 final class Cat: Animal {}
 final class Dog: Animal {}
 
-
-final class VerifyTypeTests: @unchecked Sendable {
+final class AssertTypeTests: @unchecked Sendable {
     private let failSpy = FailSpy()
 
     @Test
