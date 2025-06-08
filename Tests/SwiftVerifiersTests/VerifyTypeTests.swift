@@ -17,7 +17,7 @@ final class VerifyTypeTests: @unchecked Sendable {
     func correctType() async throws {
         let cat: Animal = Cat()
 
-        let result = verifyType(cat, expectedType: Cat.self, failure: failSpy)
+        let result = assertType(cat, expectedType: Cat.self, failure: failSpy)
 
         #expect(result != nil)
         #expect(failSpy.callCount == 0)
@@ -27,7 +27,7 @@ final class VerifyTypeTests: @unchecked Sendable {
     func incorrectType() async throws {
         let dog: Animal = Dog()
 
-        let result = verifyType(dog, expectedType: Cat.self, failure: failSpy)
+        let result = assertType(dog, expectedType: Cat.self, failure: failSpy)
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)
@@ -38,7 +38,7 @@ final class VerifyTypeTests: @unchecked Sendable {
     func incorrectTypeWithMessage() async throws {
         let dog: Animal = Dog()
 
-        let result = verifyType(dog, expectedType: Cat.self, message: "message", failure: failSpy)
+        let result = assertType(dog, expectedType: Cat.self, message: "message", failure: failSpy)
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)
@@ -49,7 +49,7 @@ final class VerifyTypeTests: @unchecked Sendable {
     func nilFails() async throws {
         let animal: Animal? = nil
 
-        let result = verifyType(animal, expectedType: Cat.self, failure: failSpy)
+        let result = assertType(animal, expectedType: Cat.self, failure: failSpy)
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)
@@ -60,7 +60,7 @@ final class VerifyTypeTests: @unchecked Sendable {
     func nilFailsWithMessage() async throws {
         let animal: Animal? = nil
 
-        let result = verifyType(animal, expectedType: Cat.self, message: "message", failure: failSpy)
+        let result = assertType(animal, expectedType: Cat.self, message: "message", failure: failSpy)
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)

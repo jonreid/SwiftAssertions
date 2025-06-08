@@ -5,7 +5,7 @@
 /// Verifies that actual object is of the expected type, returning downcast instance if successful.
 /// Otherwise, it fails the test reporting the actual type and returns nil.
 @discardableResult
-public func verifyType<BaseClass, Specific>(
+public func assertType<BaseClass, Specific>(
     _ actual: BaseClass?,
     expectedType: Specific.Type,
     message: String? = nil,
