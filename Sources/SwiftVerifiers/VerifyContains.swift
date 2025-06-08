@@ -2,7 +2,7 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftVerifiers/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-public func verifyContains<Actual: Sequence>(
+public func assertContains<Actual: Sequence>(
     _ actual: Actual,
     expected: Actual.Element,
     message: String? = nil,
@@ -19,7 +19,7 @@ public func verifyContains<Actual: Sequence>(
     )
 }
 
-public func verifyContains(
+public func assertContains(
     _ actual: String,
     expected: String,
     message: String? = nil,
