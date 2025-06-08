@@ -10,7 +10,7 @@ final class ExpectToEventuallyEqualTests: @unchecked Sendable {
 
     @Test
     func test_immediateMatch() async throws {
-        try await expectToEventuallyEqual(actual: { "abc" }, expected: "abc", failure: failSpy)
+        try await assertEventuallyEqual(actual: { "abc" }, expected: "abc", failure: failSpy)
 
         #expect(failSpy.callCount == 0)
     }
@@ -19,7 +19,7 @@ final class ExpectToEventuallyEqualTests: @unchecked Sendable {
     func eventualMatch() async throws {
         let changeling = Changeling(beforeChange: "nope")
 
-        try await expectToEventuallyEqual(
+        try await assertEventuallyEqual(
             actual: { changeling.tryAgain(returning: "eventually", after: 5) },
             expected: "eventually",
             failure: failSpy
@@ -32,7 +32,7 @@ final class ExpectToEventuallyEqualTests: @unchecked Sendable {
     func failure() async throws {
         let changeling = Changeling(beforeChange: "nope")
 
-        try await expectToEventuallyEqual(
+        try await assertEventuallyEqual(
             actual: { changeling.tryAgain(returning: "never", after: 5) },
             expected: "eventually",
             timeout: 0.1,
@@ -52,7 +52,7 @@ final class ExpectToEventuallyEqualTests: @unchecked Sendable {
     func failureWithMessage() async throws {
         let changeling = Changeling(beforeChange: "nope")
 
-        try await expectToEventuallyEqual(
+        try await assertEventuallyEqual(
             actual: { changeling.tryAgain(returning: "never", after: 5) },
             expected: "eventually",
             timeout: 0.1,
