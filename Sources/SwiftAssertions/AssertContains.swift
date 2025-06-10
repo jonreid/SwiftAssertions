@@ -19,7 +19,7 @@ public func expectToContain<Actual: Sequence>(
     )
 }
 
-public func assertContains(
+public func expectToContain(
     _ actual: String,
     expected: String,
     message: String? = nil,

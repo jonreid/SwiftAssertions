@@ -33,14 +33,14 @@ final class AssertContainsTests: @unchecked Sendable {
 
     @Test
     func stringContainsSubstring() async throws {
-        assertContains("hello", expected: "ell", failure: failSpy)
+        expectToContain("hello", expected: "ell", failure: failSpy)
 
         #expect(failSpy.callCount == 0)
     }
 
     @Test
     func stringDoesContainSubstring() async throws {
-        assertContains("hello", expected: "world", failure: failSpy)
+        expectToContain("hello", expected: "world", failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == #"Expected to contain "world", but was "hello""#)
@@ -48,7 +48,7 @@ final class AssertContainsTests: @unchecked Sendable {
 
     @Test
     func stringDoesContainSubstringWithMessage() async throws {
-        assertContains("hello", expected: "world", message: "message", failure: failSpy)
+        expectToContain("hello", expected: "world", message: "message", failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == #"Expected to contain "world", but was "hello" - message"#)
