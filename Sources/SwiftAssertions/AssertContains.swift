@@ -2,7 +2,7 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftAssertions/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-public func assertContains<Actual: Sequence>(
+public func expectToContain<Actual: Sequence>(
     _ actual: Actual,
     expected: Actual.Element,
     message: String? = nil,

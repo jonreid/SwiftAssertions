@@ -10,14 +10,14 @@ final class AssertContainsTests: @unchecked Sendable {
 
     @Test
     func arrayContainsValue() async throws {
-        assertContains([1, 2, 3], expected: 2, failure: failSpy)
+        expectToContain([1, 2, 3], expected: 2, failure: failSpy)
 
         #expect(failSpy.callCount == 0)
     }
 
     @Test
     func arrayDoesNotContainValue() async throws {
-        assertContains([1, 2, 3], expected: 4, failure: failSpy)
+        expectToContain([1, 2, 3], expected: 4, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected to contain 4, but was [1, 2, 3]")
@@ -25,7 +25,7 @@ final class AssertContainsTests: @unchecked Sendable {
 
     @Test
     func arrayDoesNotContainValueWithMessage() async throws {
-        assertContains([1, 2, 3], expected: 4, message: "message", failure: failSpy)
+        expectToContain([1, 2, 3], expected: 4, message: "message", failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected to contain 4, but was [1, 2, 3] - message")
