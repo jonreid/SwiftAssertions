@@ -8,7 +8,7 @@ public func reportFailure(
     filePath: StaticString = #filePath,
     line: UInt = #line,
     column: UInt = #column,
-    failure: any Failing = FailReal()
+    failure: any Failing = Fail()
 ) {
     failure.fail(
         message: message,

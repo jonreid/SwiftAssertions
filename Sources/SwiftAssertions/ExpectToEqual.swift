@@ -10,7 +10,7 @@ public func expectToEqual<T: Equatable>(
     filePath: StaticString = #filePath,
     line: UInt = #line,
     column: UInt = #column,
-    failure: any Failing = FailReal()
+    failure: any Failing = Fail()
 ) {
     if actual == expected { return }
     failure.fail(

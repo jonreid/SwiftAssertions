@@ -13,7 +13,7 @@ public func expectType<BaseClass, Specific>(
     filePath: StaticString = #filePath,
     line: UInt = #line,
     column: UInt = #column,
-    failure: any Failing = FailReal()
+    failure: any Failing = Fail()
 ) -> Specific? {
     guard let actual else {
         failure.fail(
