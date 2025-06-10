@@ -5,7 +5,7 @@
 import SwiftAssertions
 import Testing
 
-final class AssertEqualTests: @unchecked Sendable {
+final class ExpectToEqualTests: @unchecked Sendable {
     private let failSpy = FailSpy()
 
     @Test
