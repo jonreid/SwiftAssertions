@@ -2,6 +2,8 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftAssertions/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
+/// Reports a test failure, whether you're using Swift Testing or XCTest.
+/// This is useful when writing your own test helpers.
 public func reportFailure(
     _ message: String,
     fileID: String = #fileID,

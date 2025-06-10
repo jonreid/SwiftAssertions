@@ -2,6 +2,9 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftAssertions/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
+/// Verifies that actual sequence contains expected element.
+/// Otherwise it reports the actual sequence in a test failure.
+/// Works with Swift Testing or XCTest.
 public func expectToContain<Actual: Sequence>(
     _ actual: Actual,
     expected: Actual.Element,
@@ -19,6 +22,9 @@ public func expectToContain<Actual: Sequence>(
     )
 }
 
+/// Verifies that actual string contains expected substring.
+/// Otherwise it reports the actual string in a test failure.
+/// Works with Swift Testing or XCTest.
 public func expectToContain(
     _ actual: String,
     expected: String,

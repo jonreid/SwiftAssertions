@@ -2,6 +2,8 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftAssertions/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
+/// Verifies that actual object is equal to expected object, whether you're using Swift Testing or XCTest.
+/// This is useful when writing your own test helpers.
 public func expectToEqual<T: Equatable>(
     _ actual: T,
     expected: T,

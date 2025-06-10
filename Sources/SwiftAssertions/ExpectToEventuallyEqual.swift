@@ -4,6 +4,9 @@
 
 import Foundation
 
+/// Verifies that async closure returning actual value eventually equals expected value.
+/// It retries the closure after a delay until the timeout is reached.
+/// Works with Swift Testing or XCTest.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @MainActor
 public func expectToEventuallyEqual<T: Equatable & Sendable>(

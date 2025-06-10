@@ -3,7 +3,8 @@
 // SPDX-License-Identifier: MIT
 
 /// Verifies that actual object is of the expected type, returning downcast instance if successful.
-/// Otherwise, it fails the test reporting the actual type and returns nil.
+/// Otherwise it reports the actual type in a test failure, and returns nil.
+/// Works with Swift Testing or XCTest.
 @discardableResult
 public func expectType<BaseClass, Specific>(
     _ actual: BaseClass?,
