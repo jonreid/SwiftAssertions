@@ -2,7 +2,7 @@
 // Copyright 2025 Jonathan M. Reid. https://github.com/jonreid/SwiftAssertions/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-public func assertEqual<T: Equatable>(
+public func expectToEqual<T: Equatable>(
     _ actual: T,
     expected: T,
     message: String? = nil,

@@ -10,14 +10,14 @@ final class AssertEqualTests: @unchecked Sendable {
 
     @Test
     func equal() async throws {
-        assertEqual(1, expected: 1, failure: failSpy)
+        expectToEqual(1, expected: 1, failure: failSpy)
 
         #expect(failSpy.callCount == 0)
     }
 
     @Test
     func mismatch() async throws {
-        assertEqual(2, expected: 1, failure: failSpy)
+        expectToEqual(2, expected: 1, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected 1, but was 2")
@@ -25,7 +25,7 @@ final class AssertEqualTests: @unchecked Sendable {
 
     @Test
     func mismatchStrings() async throws {
-        assertEqual("B", expected: "A", failure: failSpy)
+        expectToEqual("B", expected: "A", failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == #"Expected "A", but was "B""#)
@@ -33,7 +33,7 @@ final class AssertEqualTests: @unchecked Sendable {
 
     @Test
     func mismatchWithMessage() async throws {
-        assertEqual(2, expected: 1, message: "message", failure: failSpy)
+        expectToEqual(2, expected: 1, message: "message", failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected 1, but was 2 - message")
@@ -44,7 +44,7 @@ final class AssertEqualTests: @unchecked Sendable {
         let one: Int? = 1
         let two: Int? = 1
 
-        assertEqual(two, expected: one, failure: failSpy)
+        expectToEqual(two, expected: one, failure: failSpy)
 
         #expect(failSpy.callCount == 0)
     }
@@ -54,7 +54,7 @@ final class AssertEqualTests: @unchecked Sendable {
         let one: Int? = nil
         let two: Int? = nil
 
-        assertEqual(two, expected: one, failure: failSpy)
+        expectToEqual(two, expected: one, failure: failSpy)
 
         #expect(failSpy.callCount == 0)
     }
@@ -64,7 +64,7 @@ final class AssertEqualTests: @unchecked Sendable {
         let one: Int? = 1
         let two: Int? = 2
 
-        assertEqual(two, expected: one, failure: failSpy)
+        expectToEqual(two, expected: one, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected 1, but was 2")
@@ -75,7 +75,7 @@ final class AssertEqualTests: @unchecked Sendable {
         let one: Int? = nil
         let two: Int? = 2
 
-        assertEqual(two, expected: one, failure: failSpy)
+        expectToEqual(two, expected: one, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected nil, but was 2")
@@ -86,7 +86,7 @@ final class AssertEqualTests: @unchecked Sendable {
         let one: Int? = 1
         let two: Int? = nil
 
-        assertEqual(two, expected: one, failure: failSpy)
+        expectToEqual(two, expected: one, failure: failSpy)
 
         #expect(failSpy.callCount == 1)
         #expect(failSpy.messages.first == "Expected 1, but was nil")
