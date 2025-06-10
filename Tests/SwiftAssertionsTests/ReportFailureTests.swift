@@ -5,11 +5,11 @@
 import SwiftAssertions
 import Testing
 
-final class FailTests: @unchecked Sendable {
+final class ReportFailureTests: @unchecked Sendable {
     private let failSpy = FailSpy()
 
     @Test
-    func failWorks() async throws {
+    func failsTest() async throws {
         reportFailure("message", failure: failSpy)
 
         #expect(failSpy.callCount == 1)
