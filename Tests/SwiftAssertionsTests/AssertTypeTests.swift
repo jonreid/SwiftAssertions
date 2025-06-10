@@ -16,7 +16,7 @@ final class AssertTypeTests: @unchecked Sendable {
     func correctType() async throws {
         let cat: Animal = Cat()
 
-        let result = assertType(cat, expectedType: Cat.self, failure: failSpy)
+        let result = expectType(cat, expectedType: Cat.self, failure: failSpy)
 
         #expect(result != nil)
         #expect(failSpy.callCount == 0)
@@ -26,7 +26,7 @@ final class AssertTypeTests: @unchecked Sendable {
     func incorrectType() async throws {
         let dog: Animal = Dog()
 
-        let result = assertType(dog, expectedType: Cat.self, failure: failSpy)
+        let result = expectType(dog, expectedType: Cat.self, failure: failSpy)
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)
@@ -37,7 +37,7 @@ final class AssertTypeTests: @unchecked Sendable {
     func incorrectTypeWithMessage() async throws {
         let dog: Animal = Dog()
 
-        let result = assertType(dog, expectedType: Cat.self, message: "message", failure: failSpy)
+        let result = expectType(dog, expectedType: Cat.self, message: "message", failure: failSpy)
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)
@@ -48,7 +48,7 @@ final class AssertTypeTests: @unchecked Sendable {
     func nilFails() async throws {
         let animal: Animal? = nil
 
-        let result = assertType(animal, expectedType: Cat.self, failure: failSpy)
+        let result = expectType(animal, expectedType: Cat.self, failure: failSpy)
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)
@@ -59,7 +59,7 @@ final class AssertTypeTests: @unchecked Sendable {
     func nilFailsWithMessage() async throws {
         let animal: Animal? = nil
 
-        let result = assertType(animal, expectedType: Cat.self, message: "message", failure: failSpy)
+        let result = expectType(animal, expectedType: Cat.self, message: "message", failure: failSpy)
 
         #expect(result == nil)
         #expect(failSpy.callCount == 1)
